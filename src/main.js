@@ -6,6 +6,8 @@ import firebase from 'firebase'
 import { routes } from './routes'
 import store from './store/store'
 
+import 'bulma/css/bulma.css'
+
 Vue.use(VueRouter);
 
 Vue.config.productionTip = false
