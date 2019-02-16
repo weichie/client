@@ -49,6 +49,12 @@
                         </p>
                      </form>
                   </div>
+                  <a class="panel-block" v-for="(todo, i) in todos" :key="'todo_' + i">
+                     <span class="panel-icon">
+                        <i class="far fa-check-circle"></i>
+                     </span>
+                     {{ todo }}
+                  </a>
                </nav>
             </div>
          </div>
@@ -66,24 +72,35 @@
          return{
             activeTab: 1,
             newTodo: '',
+            todos: [],
             successMessage: ''
          }
       },
+
+      mounted(){
+         console.log('mounted');
+         setTimeout(() => {
+            this.getTodos();
+         }, 1000);
+      },
+
       methods: {
          switchTab(tabId){
             this.activeTab = tabId;
          },
+
          addTodo(){
             db.collection('users')
                .doc(this.$store.getters.getUserDoc)
                .collection('todos')
                .add({
                   todo: this.newTodo,
-                  complete: 0,
+                  complete: false,
                   added: firebase.firestore.Timestamp.fromDate(new Date())
                })
                .then(() => {
                   //FLASH SUCCESS
+                  this.getTodos();
                   this.successMessage = 'Added a todo item!'
                   this.newTodo = '';
                })
@@ -91,6 +108,22 @@
                   console.error('Error: ' + err);
                });
          },
+
+         getTodos(){
+            db.collection(`users/${this.$store.getters.getUserDoc}/todos`)
+               .where('complete', '==', false)
+               .get()
+               .then(snapshot => {
+                  snapshot.forEach(subDoc => {
+                     if(this.todos.indexOf(subDoc.data().todo) === -1){
+                        this.todos.push(subDoc.data().todo);
+                     }
+                  });
+               })
+               .catch(err => {
+                  console.error('Error getting todos:', err);
+               })
+         }
       },
    }
 </script>
