@@ -43,7 +43,7 @@
 
             <div class="field is-grouped">
                <div class="control">
-                  <button class="button is-secondary">Create account</button>
+                  <button class="button is-primary">Create account</button>
                </div>
                <div class="control">
                   <button @click.prevent.stop="reset" class="button is-text">Cancel</button>
@@ -56,7 +56,7 @@
 
 <script>
    import firebase from 'firebase'
-   import db from '../firestore'
+   import db from '../../firestore'
 
    export default {
       name: 'Register',

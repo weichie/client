@@ -21,9 +21,9 @@
             <div class="navbar-end">
                <div class="navbar-item">
                   <div class="buttons">
-                     <router-link to="/register" class="button is-primary">Sign up</router-link>
-                     <router-link to="/login" class="button is-light">Log in</router-link>
-                     <a @click.prevent.stop="logout">Logout</a>
+                     <router-link to="/login" class="button is-primary">Log in</router-link>
+                     <router-link to="/register" class="button is-light">Sign up</router-link>
+                     <a @click.prevent.stop="logout" class="button is-primary">Logout</a>
                   </div><!-- ./button -->
                </div><!-- ./navbar-item -->
             </div><!-- ./navbar-end -->
