@@ -16,6 +16,9 @@
          <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                <router-link to="/" class="navbar-item">Home</router-link>
+               <router-link to="/clients" class="navbar-item">Clients</router-link>
+               <router-link to="/income" class="navbar-item">Income</router-link>
+               <router-link to="/expense" class="navbar-item">Expense</router-link>
             </div>
 
             <div class="navbar-end">

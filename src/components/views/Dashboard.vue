@@ -33,6 +33,9 @@
                      </li>
                   </ul>
                </div>
+
+               <DashboardGraph height="300" />
+
             </div>
             <div class="column">
                <nav class="panel">
@@ -64,10 +67,17 @@
 
 <script>
    import firebase from 'firebase'
-   import db from '../firestore'
+   import db from '../../firestore'
+
+   import DashboardGraph from '../graphs/DashboardGraph'
 
    export default {
       name: 'Dashboard',
+      
+      components:{
+         DashboardGraph
+      },
+
       data(){
          return{
             activeTab: 1,
@@ -77,11 +87,14 @@
          }
       },
 
-      mounted(){
-         console.log('mounted');
-         setTimeout(() => {
+      created(){
+         if(this.$store.getters.getUserDoc){
             this.getTodos();
-         }, 1000);
+         }else{
+            setTimeout(() => {
+               this.getTodos();
+            }, 1000);
+         }
       },
 
       methods: {
@@ -123,7 +136,7 @@
                .catch(err => {
                   console.error('Error getting todos:', err);
                })
-         }
+         },
       },
    }
 </script>
