@@ -21,9 +21,9 @@
             <div class="navbar-end">
                <div class="navbar-item">
                   <div class="buttons">
-                     <router-link to="/login" class="button is-primary">Log in</router-link>
-                     <router-link to="/register" class="button is-light">Sign up</router-link>
-                     <a @click.prevent.stop="logout" class="button is-primary">Logout</a>
+                     <router-link v-if="!isLoggedIn" to="/login" class="button is-primary">Log in</router-link>
+                     <router-link v-if="!isLoggedIn" to="/register" class="button is-light">Sign up</router-link>
+                     <a v-if="isLoggedIn" @click.prevent.stop="logout" class="button is-primary">Logout</a>
                   </div><!-- ./button -->
                </div><!-- ./navbar-item -->
             </div><!-- ./navbar-end -->
@@ -35,14 +35,21 @@
 
 <script>
    import firebase from 'firebase'
+   import { STORE_AUTH_RESET_USER } from '../store/modules/authStore'
 
    export default {
       name: "Header-component",
       methods: {
          logout(){
             firebase.auth().signOut().then(() => {
+               this.$store.dispatch(STORE_AUTH_RESET_USER);
                this.$router.replace('login');
             });
+         }
+      },
+      computed: {
+         isLoggedIn(){
+            return this.$store.getters.isLoggedIn
          }
       }
    }

@@ -54,26 +54,7 @@
          login(){
             firebase.auth().signInWithEmailAndPassword(this.email, this.password)
                .then(user => {
-                  const userEmail = user.user.email;
-                  let userDoc = {};
-
-                  db.collection('users').where("email", "==", userEmail)
-                     .get()
-                     .then(querySnapshot => {
-                        querySnapshot.forEach(doc => {
-                           const docId = doc.id;
-                           userDoc = {
-                              ...doc.data(),
-                              docId
-                           }
-                           this.$store.dispatch(STORE_AUTH_SET_USER_STATE, userDoc).then(() => {
-                              this.$router.replace('dashboard');
-                           });
-                        });
-                     })
-                     .catch(err => {
-                        console.log("Error getting documents: ", err);
-                     });
+                  this.$router.replace('dashboard');
                })
                .catch(err => {
                   this.errorMessage = err.message
