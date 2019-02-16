@@ -39,7 +39,7 @@
                </div>
             </div>
 
-            <p v-if="errorMessage" class="has-text-danger">{{errorMessage}}</p>
+            <p v-show="errorMessage" class="has-text-danger">{{errorMessage}}</p>
 
             <div class="field is-grouped">
                <div class="control">

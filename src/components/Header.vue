@@ -3,7 +3,7 @@
       <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
          <div class="navbar-brand">
             <router-link class="navbar-item" to="/">
-               <img src="https://www.weichieprojects.com/wp-content/uploads//2017/12/logo-black.png">
+               <strong>Client</strong>
             </router-link>
 
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -23,6 +23,7 @@
                   <div class="buttons">
                      <router-link to="/register" class="button is-primary">Sign up</router-link>
                      <router-link to="/login" class="button is-light">Log in</router-link>
+                     <a @click.prevent.stop="logout">Logout</a>
                   </div><!-- ./button -->
                </div><!-- ./navbar-item -->
             </div><!-- ./navbar-end -->
@@ -33,8 +34,17 @@
 </template>
 
 <script>
+   import firebase from 'firebase'
+
    export default {
-      name: "Header-component"
+      name: "Header-component",
+      methods: {
+         logout(){
+            firebase.auth().signOut().then(() => {
+               this.$router.replace('login');
+            });
+         }
+      }
    }
 </script>
 
