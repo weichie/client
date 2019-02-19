@@ -7,6 +7,7 @@ import Dashboard from './components/views/Dashboard'
 import Clients from './components/views/Clients'
 import Income from './components/views/Income'
 import Expense from './components/views/Expense'
+import AddClient from './components/views/AddClient'
 
 export const routes = [
    {
@@ -20,30 +21,27 @@ export const routes = [
       path: '/dashboard',
       name: 'Dashboard',
       component: Dashboard,
-      meta: {
-         requiresAuth: true
-      }
+      meta: {requiresAuth: true}
    },{
       path: '/clients',
       name: 'Clients',
       component: Clients,
-      meta: {
-         requiresAuth: true
-      }
+      meta: {requiresAuth: true}
+   },{
+      path: '/add-clients',
+      name: 'AddClient',
+      component: AddClient,
+      meta: {requiresAuth: true}
    },{
       path: '/income',
       name: 'Income',
       component: Income,
-      meta: {
-         requiresAuth: true
-      }
+      meta: {requiresAuth: true}
    },{
       path: '/expense',
       name: 'Expenses',
       component: Expense,
-      meta: {
-         requiresAuth: true
-      }
+      meta: {requiresAuth: true}
    },{
       path: '/login',
       name: 'login',
