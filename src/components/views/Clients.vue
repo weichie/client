@@ -15,21 +15,21 @@
             <thead>
                <tr>
                   <th>Company</th>
+                  <th>Contact</th>
+                  <th>Address</th>
                   <th>BTW Number</th>
                   <th>Email</th>
                   <th>Phone</th>
-                  <th>Address</th>
-                  <th>Contact</th>
                </tr>
             </thead>
             <tbody>
                <tr v-for="(client, i) in clients" :key="'client_' + i">
-                  <td>{{ client.companyName }}</td>
-                  <td>{{ client.taxId }}</td>
-                  <td>{{ client.email }}</td>
-                  <td>{{ client.phone }}</td>
-                  <td>{{ client.address + ', ' + client.zip + " " + client.city }}</td>
+                  <td><strong>{{ client.companyName }}</strong></td>
                   <td>{{ client.firstname + " " + client.lastname }}</td>
+                  <td>{{ client.address + ', ' + client.zip + " " + client.city }}</td>
+                  <td>{{ client.taxId }}</td>
+                  <td><a :href="'mailto:' + client.email">{{client.email}}</a></td>
+                  <td>{{ client.phone }}</td>
                </tr>
             </tbody>
          </table>

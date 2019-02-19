@@ -33,7 +33,12 @@
                   <input class="input" type="text" id="taxid" placeholder="BTW BE" v-model="clientInfo.taxId" />
                </div>
             </div>
-
+            <div class="field">
+               <label for="website" class="label">Website</label>
+               <div class="control">
+                  <input class="input" type="text" id="website" v-model="clientInfo.website" />
+               </div>
+            </div>
             <div class="field">
                <label for="email" class="label">Contact Email</label>
                <div class="control">
@@ -99,6 +104,7 @@
                zip: '',
                city: '',
                country: '',
+               website: ''
             },
             errorMessage: ''
          }
