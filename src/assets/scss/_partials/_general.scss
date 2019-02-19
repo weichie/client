@@ -9,3 +9,12 @@ body{
    color: $text-color;
    background: $bg-color;
 }
+
+a.panel-block.markedAsDone{
+   text-decoration: line-through !important;
+   opacity: .65 !important;
+}
+
+.pull-right{
+   float: right;
+}

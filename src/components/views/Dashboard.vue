@@ -40,7 +40,10 @@
             <div class="column">
                <nav class="panel">
                   {{successMessage}}
-                  <p class="panel-heading">To Do's</p>
+                  <p class="panel-heading">
+                     To Do's
+                     <small class="pull-right"><router-link to="/todos">View all</router-link></small>
+                  </p>
   
                   <div class="panel-block">
                      <form action="" style="width: 100%" @submit.prevent.stop="addTodo">
@@ -52,11 +55,11 @@
                         </p>
                      </form>
                   </div>
-                  <a class="panel-block" v-for="(todo, i) in todos" :key="'todo_' + i">
+                  <a v-for="(todo, i) in todos" class="panel-block" :class="{'markedAsDone': todo.selected}" :key="'todo_' + i" @click="markAsComplete(todo[1], $event), $set(todo, 'selected', !todo.selected)">
                      <span class="panel-icon">
                         <i class="far fa-check-circle"></i>
                      </span>
-                     {{ todo }}
+                     {{ todo[0] }}
                   </a>
                </nav>
             </div>
@@ -83,7 +86,8 @@
             activeTab: 1,
             newTodo: '',
             todos: [],
-            successMessage: ''
+            successMessage: '',
+            selected: undefined,
          }
       },
 
@@ -129,7 +133,7 @@
                .then(snapshot => {
                   snapshot.forEach(subDoc => {
                      if(this.todos.indexOf(subDoc.data().todo) === -1){
-                        this.todos.push(subDoc.data().todo);
+                        this.todos.push([subDoc.data().todo, subDoc.id]);
                      }
                   });
                })
@@ -137,7 +141,12 @@
                   console.error('Error getting todos:', err);
                })
          },
+
+         markAsComplete(docId){
+            db.collection(`users/${this.$store.getters.getUserDoc}/todos`)
+               .doc(docId)
+               .update({complete: true});
+         }
       },
    }
 </script>
-
