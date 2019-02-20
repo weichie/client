@@ -1,9 +1,15 @@
 <template>
-   <section class="section">
-      <div class="container">
-         <h1 class="title">Manage your income</h1>
-      </div>
-   </section>
+   <div class="container">
+      <h2 class="flex-between">
+         Manage your income.
+         <router-link to="add-clients" class="btn btn-primary">
+            <span class="icon">
+               <i class="fas fa-plus"></i>
+            </span>
+            <span>Add new</span>
+         </router-link>
+      </h2>
+   </div>
 </template>
 
 <script>

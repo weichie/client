@@ -1,0 +1,28 @@
+table{
+   width: 100%;
+   text-align: left;
+   border-collapse: collapse;
+}
+
+th{
+   border: 1px solid $border-color;
+   padding: 10px;
+   font-weight: 700;
+   font-size: 14px;
+   color: $primary-color;
+   background: darken($bg-color, 5%);
+}
+td{
+   font-size: 15px;
+   padding: 8px 10px;
+   background: #fff;
+   border: 1px solid $border-color;
+}
+td.actions{
+   a{
+      display: inline-block;
+      margin-left: 15px;
+
+      &:first-child  {margin-left: 0;}
+   }
+}

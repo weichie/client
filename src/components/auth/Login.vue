@@ -1,37 +1,20 @@
 <template>
-   <section class="section">
-      <div class="container">
-         <h1 class="title">Login to your account</h1>
-
-         <p v-show="errorMessage" class="has-text-danger">{{errorMessage}}</p>
-
-         <form @submit.prevent="login">
-            <div class="field">
-               <label for="email" class="label">Email</label>
-               <div class="control">
-                  <input class="input" type="email" id="email" placeholder="Email" v-model="email" />
-               </div>
-            </div>
-
-            <div class="field">
-               <label for="password">Password</label>
-               <div class="control">
-                  <input class="input" type="password" id="password" placeholder="Password" v-model="password" />
-               </div>
-            </div>
-
-            <div class="field is-grouped">
-               <div class="control">
-                  <button class="button is-primary">Login</button>
-               </div>
-            </div>
-            <p>
-               Don't have an account yet? 
-               <router-link to="/register">Create one here</router-link>
-            </p>
-         </form>
-      </div>
-   </section>
+   <div class="container auth-container">
+      <h2>Login to your account</h2>
+      <p class="error-message" v-show="errorMessage">{{errorMessage}}</p>
+      <form @submit.prevent="login()" class="auth-form">
+         <div class="input-group large">
+            <input type="email" placeholder="email" v-model="email" autocomplete="email" />
+         </div>
+         <div class="input-group large">
+            <input type="password" placeholder="password" v-model="password" autocomplete="current-password" />
+         </div>
+         <div class="input-group large">
+            <button class="btn btn-block btn-primary">Login</button>
+         </div>
+      </form>
+      <small>Not yet an account? <router-link to="/register">Create one here</router-link></small>
+   </div>
 </template>
 
 <script>
@@ -53,7 +36,7 @@
       methods: {
          login(){
             firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-               .then(user => {
+               .then(() => {
                   this.$router.replace('dashboard');
                })
                .catch(err => {

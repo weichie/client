@@ -1,0 +1,28 @@
+header{
+   padding: 0;
+   background: #fff;
+   display: flex;
+   align-items: center;
+
+   a{
+      color: #2c3e50;
+      text-decoration: none;
+   }
+   .logo{
+      padding: 20px 0;
+      text-align: center;
+      width: 100px;
+      font-weight: 700;
+      color: $secondary-color;
+      background: $primary-color;
+      margin-right: 15px;
+   }
+   .main-nav{
+      padding-right: 5px;
+      a{
+         display: inline-block;
+         padding: 10px 15px;
+         cursor: pointer;
+      }
+   }
+}

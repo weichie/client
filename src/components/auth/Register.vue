@@ -1,57 +1,35 @@
 <template>
-   <section class="section">
-      <div class="container">
-         <h1 class="title">Registrate your account!</h1>
-         
-         <form @submit.prevent="registerUser">
-            <div class="field">
-               <label class="label" for="firstname">Firstname</label>
-               <div class="control">
-                  <input class="input" type="text" id="firstname" placeholder="Firstname" v-model="userData.firstname">
-               </div>
+   <div class="container auth-container">
+      <h2>Register a new account!</h2>
+
+      <div class="register-panel">
+         <p class="error-message" v-show="this.errorMessage">{{errorMessage}}</p>
+
+         <form @submit.prevent="registerUser" class="auth-form">
+            <div class="input-group medium">
+               <input class="input" type="text" id="firstname" placeholder="Firstname" v-model="userData.firstname" autocomplete="off" />
             </div>
-
-            <div class="field">
-               <label class="label" for="lastname">Lastname</label>
-               <div class="control">
-                  <input class="input" type="text" id="lastname" placeholder="Lastname" v-model="userData.lastname">
-               </div>
+            <div class="input-group medium">
+               <input class="input" type="text" id="lastname" placeholder="Lastname" v-model="userData.lastname" autocomplete="off" />
             </div>
-
-            <div class="field">
-               <label class="label" for="username">Username</label>
-               <div class="control">
-                  <input class="input" type="text" id="username" placeholder="Username" v-model="userData.username">
-               </div>
+            <div class="input-group large">
+               <input class="input" type="text" id="username" placeholder="Username" v-model="userData.username" autocomplete="off" />
             </div>
-
-            <div class="field">
-               <label class="label" for="email">Email</label>
-               <div class="control">
-                  <input class="input" type="email" id="email" placeholder="Email" v-model="userData.email">
-               </div>
+            <div class="input-group large">
+               <input class="input" type="email" id="email" placeholder="Email" v-model="userData.email" autocomplete="off" />
             </div>
-
-            <div class="field">
-               <label class="label" for="password">Password</label>
-               <div class="control">
-                  <input class="input" type="password" id="password" placeholder="Password" v-model="userData.password">
-               </div>
+            <div class="input-group large">
+                <input class="input" type="password" id="password" placeholder="Password" v-model="userData.password" autocomplete="off" />
             </div>
-
-            <p v-show="errorMessage" class="has-text-danger">{{errorMessage}}</p>
-
-            <div class="field is-grouped">
-               <div class="control">
-                  <button class="button is-primary">Create account</button>
-               </div>
-               <div class="control">
-                  <button @click.prevent.stop="reset" class="button is-text">Cancel</button>
-               </div>
+            <div class="input-group large">
+               <button class="btn btn-primary">Create account</button>
+               <button @click.prevent.stop="reset" class="btn btn-secondary">Cancel</button>
             </div>
          </form>
-      </div><!-- ./container -->
-   </section>
+
+         <small>Already have an account? <router-link to="/login">Login</router-link></small>
+      </div>
+   </div>
 </template>
 
 <script>

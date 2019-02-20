@@ -8,9 +8,6 @@ import { routes } from './routes'
 import store from './store/store'
 import { STORE_AUTH_SET_USER_STATE } from './store/modules/authStore'
 
-import 'bulma/css/bulma.css'
-
-
 Vue.use(VueRouter);
 
 Vue.config.productionTip = false

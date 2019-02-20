@@ -1,0 +1,36 @@
+.btn{
+   border: none;
+   border-radius: 2px;
+   padding: 10px 15px;
+   display: inline-block;
+   font-weight: 700;
+   font-size: 12px;
+   cursor: pointer;
+   transition: background .25s ease;
+
+   svg   {margin-right: 10px;}
+}
+
+.btn-block  {
+   display: block;
+   width: 100%;
+}
+
+.btn-primary{
+   background: $secondary-color;
+   color: #fff;
+
+   &:hover  {
+      color: #fff;
+      background: darken($secondary-color, 5%);
+   }
+}
+.btn-secondary{
+   background: $primary-color;
+   color: #fff;
+
+   &:hover  {
+      color: #fff;
+      background: darken($primary-color, 5%);
+   }
+}

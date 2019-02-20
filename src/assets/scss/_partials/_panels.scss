@@ -1,0 +1,39 @@
+.panel-row{
+   display: flex;
+   justify-content: space-between;
+}
+.panel{
+   border: 1px solid $border-color;
+   margin: 10px; padding: 10px;
+   border-radius: 5px;
+   background: #fff;
+
+   &.large     {width: 100%;}
+   &.semi      {width: 70%;}
+   &.medium    {width: 50%;}
+   &.third     {width: 33.33%;}
+   &.small     {width: 25%;}
+}
+
+.panel-header{
+   h4{
+      color: $primary-color;
+      display: flex;
+      align-items: center;
+   }
+   svg{
+      font-size: 22px;
+      margin-right: 15px;
+      color: $secondary-color;
+   }
+}
+.panel-body{
+   margin-top: 10px;
+   font-weight: 700;
+   font-size: 26px;
+   text-align: right;
+}
+
+.panel-padding{
+   padding: 0 10px;
+}

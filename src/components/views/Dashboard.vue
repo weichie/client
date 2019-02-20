@@ -1,71 +1,81 @@
 <template>
-   <section class="section">
-      <div class="container">
-         <h1 class="title">Welcome, {{this.$store.state.authStore.userData.username}}!</h1>
+   <div class="container">
+      <h2>Welcome, {{ $store.state.authStore.userData.username }}!</h2>
 
-         <div class="columns">
-            <div class="column is-two-thirds">
-               <div class="tabs">
-                  <ul>
-                     <li :class="{'is-active': activeTab === 1}">
-                        <a @click.prevent.stop="switchTab(1)">
-                           <span class="icon is-small">
-                              <i class="fas fa-dollar-sign"></i>
-                           </span>
-                           <span>All</span>
-                        </a>
-                     </li>
-                     <li :class="{'is-active': activeTab === 2}">
-                        <a @click.prevent.stop="switchTab(2)">
-                           <span class="icon is-small">
-                              <i class="far fa-smile"></i>
-                           </span>
-                           <span>Income</span>
-                        </a>
-                     </li>
-                     <li :class="{'is-active': activeTab === 3}">
-                        <a @click.prevent.stop="switchTab(3)">
-                           <span class="icon is-small">
-                              <i class="far fa-frown"></i>
-                           </span>
-                           <span>Expenses</span>
-                        </a>
-                     </li>
-                  </ul>
-               </div>
-
-               <DashboardGraph height="300" />
-
+      <div class="panel-row">
+         <div class="panel small">
+            <div class="panel-header">
+               <h4>
+                  <i class="fas fa-chart-line"></i>
+                  Income
+               </h4>
             </div>
-            <div class="column">
-               <nav class="panel">
-                  {{successMessage}}
-                  <p class="panel-heading">
-                     To Do's
-                     <small class="pull-right"><router-link to="/todos">View all</router-link></small>
-                  </p>
-  
-                  <div class="panel-block">
-                     <form action="" style="width: 100%" @submit.prevent.stop="addTodo">
-                        <p class="control has-icons-left">
-                           <input class="input is-small" type="text" placeholder="Add Todo" v-model="newTodo" />
-                           <span class="icon is-small is-left">
-                              <i class="fas fa-plus"></i>
-                           </span>
-                        </p>
-                     </form>
-                  </div>
-                  <a v-for="(todo, i) in todos" class="panel-block" :class="{'markedAsDone': todo.selected}" :key="'todo_' + i" @click="markAsComplete(todo[1], $event), $set(todo, 'selected', !todo.selected)">
-                     <span class="panel-icon">
-                        <i class="far fa-check-circle"></i>
-                     </span>
-                     {{ todo[0] }}
-                  </a>
-               </nav>
+            <div class="panel-body">
+               <span class="currency-symbol">&euro;</span>
+               3000
+            </div>
+         </div>
+         <div class="panel small">
+            <div class="panel-header">
+               <h4>
+                  <i class="fas fa-level-down-alt"></i>
+                  Expenses
+               </h4>
+            </div>
+            <div class="panel-body">
+               <span class="currency-symbol">&euro;</span>
+               3000
+            </div>
+         </div>
+         <div class="panel small">
+            <div class="panel-header">
+               <h4>
+                  <i class="fas fa-rocket"></i>
+                  Net Worth
+               </h4>
+            </div>
+            <div class="panel-body">
+               <span class="currency-symbol">&euro;</span>
+               3000
+            </div>
+         </div>
+         <div class="panel small">
+            <div class="panel-header">
+               <h4>
+                  <i class="fas fa-hand-holding-usd"></i>
+                  Savings
+               </h4>
+            </div>
+            <div class="panel-body">
+               <span class="currency-symbol">&euro;</span>
+               3000
             </div>
          </div>
       </div>
-   </section>   
+
+      <div class="panel-block">
+         <form action="" style="width: 100%" @submit.prevent.stop="addTodo">
+            <p class="control has-icons-left">
+               <input class="input is-small" type="text" placeholder="Add Todo" v-model="newTodo" />
+               <span class="icon is-small is-left">
+                  <i class="fas fa-plus"></i>
+               </span>
+            </p>
+         </form>
+      </div>
+
+      <ul>
+         <li 
+            v-for="(todo, i) in todos" 
+            :class="{'markedAsDone': todo.selected}" 
+            :key="'todo_' + i" 
+            @click="markAsComplete(todo[1], $event), $set(todo, 'selected', !todo.selected)">
+            <span class="action">
+               {{ todo[0] }}
+            </span>
+         </li>
+      </ul>
+   </div>
 </template>
 
 <script>

@@ -1,40 +1,38 @@
 <template>
-   <section class="section">
-      <div class="container">
-         <h1 class="title">
-            Manage your clients
-            <router-link to="add-clients" class="button is-primary is-pulled-right">
-               <span class="icon">
-                  <i class="fas fa-plus"></i>
-               </span>
-               <span>Add new</span>
-            </router-link>
-         </h1>
+   <div class="container">
+      <h2 class="flex-between">
+         Manage your clients.
+         <router-link to="add-clients" class="btn btn-primary">
+            <span class="icon">
+               <i class="fas fa-plus"></i>
+            </span>
+            <span>Add new</span>
+         </router-link>
+      </h2>
 
-         <table class="table is-striped is-narrow is-hoverable is-fullwidth">
-            <thead>
-               <tr>
-                  <th>Company</th>
-                  <th>Contact</th>
-                  <th>Address</th>
-                  <th>BTW Number</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr v-for="(client, i) in clients" :key="'client_' + i">
-                  <td><strong><router-link :to="'/client/' + client.clientId">{{ client.companyName }}</router-link></strong></td>
-                  <td>{{ client.firstname + " " + client.lastname }}</td>
-                  <td>{{ client.address + ', ' + client.zip + " " + client.city }}</td>
-                  <td>{{ client.taxId }}</td>
-                  <td><a :href="'mailto:' + client.email">{{client.email}}</a></td>
-                  <td>{{ client.phone }}</td>
-               </tr>
-            </tbody>
-         </table>
-      </div>
-   </section>
+      <table class="table is-striped is-narrow is-hoverable is-fullwidth">
+         <thead>
+            <tr>
+               <th>Company</th>
+               <th>City</th>
+               <th>BTW Number</th>
+               <th>Contact</th>
+               <th>Email</th>
+               <th>Phone</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr v-for="(client, i) in clients" :key="'client_' + i">
+               <td><strong><router-link :to="'/client/' + client.clientId">{{ client.companyName }}</router-link></strong></td>
+               <td>{{ client.city }}</td>
+               <td>{{ client.taxId }}</td>
+               <td>{{ client.firstname + " " + client.lastname }}</td>
+               <td><a :href="'mailto:' + client.email">{{client.email}}</a></td>
+               <td>{{ client.phone }}</td>
+            </tr>
+         </tbody>
+      </table>      
+   </div>
 </template>
 
 <script>

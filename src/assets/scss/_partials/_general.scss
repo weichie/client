@@ -10,11 +10,38 @@ body{
    background: $bg-color;
 }
 
-a.panel-block.markedAsDone{
-   text-decoration: line-through !important;
-   opacity: .65 !important;
+.container{
+   margin: 0 auto;
+   overflow: hidden;
+   width: 100%;
+   padding: 35px 50px;
 }
 
-.pull-right{
-   float: right;
+.auth-container{
+   text-align: center;
+
+   h2{
+      color: $primary-color;
+      font-weight: 400;
+      font-size: 36px;
+      margin-bottom: 15px;
+   }
+}
+
+.app-content{
+   position: relative;
+   display: flex;
+   min-height: calc(100vh - 63px);
+}
+
+small.total{
+   letter-spacing: .4px;
+   text-align: right;
+   display: block;
+}
+span.total{
+   color: $secondary-color;
+   font-size: 30px;
+   display: block;
+   text-align: right;
 }

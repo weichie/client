@@ -1,0 +1,52 @@
+form{
+   &.auth-form{
+      max-width: 500px;
+      margin: 0 auto;
+      overflow: hidden;
+   }
+}
+
+.input-group{
+   display: block;
+   float: left;
+   padding: 5px;
+
+   &.large     {width: 100%}
+   &.semi      {width: 75%;}
+   &.medium    {width: 50%;}
+   &.third     {width: 33.33%;}
+   &.small     {width: 25%;}
+}
+
+input,
+textarea{
+   background: #fff;
+   border-radius: 5px;
+   border: 1px solid $border-color;
+   padding: 8px;
+   width: 100%;
+   display: inline-block;
+   font-size: 12px;
+   outline: none;
+   resize: none;
+
+   &:focus{
+      border: 1px solid $secondary-color;
+   }
+}
+
+select{
+   background: #fff;
+   border-radius: 5px;
+   border: 1px solid $border-color;
+   padding: 8px;
+   width: 100%;
+   display: inline-block;
+   font-size: 12px;
+   outline: none;
+   appearance: none;
+
+   &:focus{
+      border: 1px solid $secondary-color;
+   }
+}

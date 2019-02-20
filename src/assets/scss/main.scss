@@ -1,3 +1,16 @@
+//Partials
 @import "_partials/variables";
-@import "_partials/general";
 @import "_partials/typography";
+@import "_partials/buttons";
+@import "_partials/general";
+@import "_partials/forms";
+@import "_partials/tables";
+@import "_partials/modals";
+@import "_partials/panels";
+@import "_partials/notifications";
+
+//Components
+@import "_components/header";
+@import "_components/sidebar";
+
+//Views

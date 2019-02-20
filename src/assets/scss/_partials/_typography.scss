@@ -1,3 +1,63 @@
-small{
-   font-size: 14px !important;
+.text-left     {text-align: left;}
+.text-center   {text-align: center;}
+.text-right    {text-align: right;}
+
+.pull-right    {float: right;}
+.pull-none     {float: none;}
+.pull-left     {float: left;}
+
+small    {font-size: 12px;}
+
+a{
+   color: $primary-color;
+   text-decoration: none;
+   transition: all .25s ease;
+
+   &:hover{
+      color: $secondary-color;
+   }
 }
+
+h1{
+   font-weight: 300;
+   font-size: 28px;
+   color: $primary-color;
+   text-transform: capitalize;
+   flex: 1;
+}
+
+h2{
+   color: $primary-color;
+   font-size: 22px;
+   display: block;
+   margin-bottom: 15px;
+   position: relative;
+   overflow: hidden;
+   display: flex;
+   align-items: center;
+
+   &.small{
+      margin-top: 10px;
+      margin-bottom: 25px;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 400;
+   }
+}
+
+.toUpper          {text-transform: uppercase;}
+.toLower          {text-transform: lowercase;}
+.toCamel          {text-transform: capitalize;}
+
+.green            {color: $green;}
+.red              {color: $red;}
+.yellow           {color: $yellow;}
+
+.bg-green         {background: $green;}
+.bg-red           {background: $red;}
+.bg-yellow        {background: $yellow;}
+
+.flex-between     {justify-content: space-between;}
+.flex-around      {justify-content: space-around;}
+
+.align-center     {align-items: center;}

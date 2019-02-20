@@ -1,64 +1,67 @@
 <template>
-   <section class="section">
-      <div class="container">
-         <p v-if="errorMessage">{{errorMessage}}</p>
-         
-         <h1 class="title">{{ clientInfo.companyName }}</h1>
-         <h2 class="subtitle">
-            {{clientInfo.address}},<br>
-            {{clientInfo.zip}} {{clientInfo.city}}<br>
-            {{clientInfo.country}}
-         </h2>
+   <div class="container">
+      <h1>{{ clientInfo.companyName }}</h1>
+      <h2 class="small">
+         {{clientInfo.address}},<br>
+         {{clientInfo.zip}} {{clientInfo.city}}<br>
+         {{clientInfo.country}}
+      </h2>
 
-         <div class="columns">
-            <div class="column is-three-fifths">
+      <div class="panel-row">
+         <div class="panel semi">
+            <div class="panel-header">
+               <h4 class="toUpper bold align-center flex-between">
+                  Client Info
+                  <router-link to="/" class="btn btn-primary">
+                     Edit
+                  </router-link>
+               </h4>
+            </div>
+            <div class="panel-body">
                <table class="table is-striped is-narrow is-hoverable is-fullwidth">
                   <tbody>
                      <tr v-for="(value, key, index) in clientInfo" :key="'row_' + index">
-                        <td><strong>{{ key }}</strong></td>
+                        <td><strong class="toCamel">{{ key }}</strong></td>
                         <td>{{ value }}</td>
                      </tr>
                   </tbody>
                </table>
             </div>
+         </div>
+         <div class="panel small">
+            <div class="panel-header">
+               <h4 class="toUpper bold">
+                  Recent Invoices
+               </h4>
+               <a class="panel-block">
+                  <strong>
+                     #2019003
+                     <span class="is-pulled-right">31/01/2019</span>
+                  </strong>
+                  <p>€ 2.722,50</p>
+               </a>
+               <a class="panel-block">
+                  <strong>
+                     #2019003
+                     <span class="is-pulled-right">31/01/2019</span>
+                  </strong>
+                  <p>€ 2.722,50</p>
+               </a>
+               <a class="panel-block">
+                  <strong>
+                     #2019003
+                     <span class="is-pulled-right">31/01/2019</span>
+                  </strong><br>
+                  <p>€ 2.722,50</p>
+               </a>
 
-            <div class="column is-two-fifths">
-               <nav class="panel">
-                  <h3 class="panel-heading">
-                     Recent Invoices
-                  </h3>
-               
-                  <a class="panel-block">
-                     <strong>
-                        #2019003
-                        <span class="is-pulled-right">31/01/2019</span>
-                     </strong>
-                     <p>€ 2.722,50</p>
-                  </a>
-                  <a class="panel-block">
-                     <strong>
-                        #2019003
-                        <span class="is-pulled-right">31/01/2019</span>
-                     </strong>
-                     <p>€ 2.722,50</p>
-                  </a>
-                  <a class="panel-block">
-                     <strong>
-                        #2019003
-                        <span class="is-pulled-right">31/01/2019</span>
-                     </strong><br>
-                     <p>€ 2.722,50</p>
-                  </a>
-                  <div class="panel-block">
-                     <button class="button is-link is-outlined is-fullwidth">
-                        View All Invoices
-                     </button>
-                  </div>
-               </nav>
+               <button class="btn btn-block btn-secondary">
+                  View All Invoices
+               </button>
             </div>
          </div>
       </div>
-   </section>
+   </div>         
 </template>
 
 <script>
