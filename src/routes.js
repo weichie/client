@@ -5,6 +5,7 @@ import Register from './components/auth/Register'
 
 import Dashboard from './components/views/Dashboard'
 import Clients from './components/views/Clients'
+import Client from './components/views/Client'
 import Income from './components/views/Income'
 import Expense from './components/views/Expense'
 import AddClient from './components/views/AddClient'
@@ -27,6 +28,11 @@ export const routes = [
       name: 'Clients',
       component: Clients,
       meta: {requiresAuth: true}
+   },{
+      path: '/client/:id',
+      name: 'Client',
+      component: Client,
+      meta: { requiresAuth: true }
    },{
       path: '/add-clients',
       name: 'AddClient',

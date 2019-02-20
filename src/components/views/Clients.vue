@@ -24,7 +24,7 @@
             </thead>
             <tbody>
                <tr v-for="(client, i) in clients" :key="'client_' + i">
-                  <td><strong>{{ client.companyName }}</strong></td>
+                  <td><strong><router-link :to="'/client/' + client.clientId">{{ client.companyName }}</router-link></strong></td>
                   <td>{{ client.firstname + " " + client.lastname }}</td>
                   <td>{{ client.address + ', ' + client.zip + " " + client.city }}</td>
                   <td>{{ client.taxId }}</td>
@@ -57,7 +57,9 @@
                .get()
                .then(snapshot => {
                   snapshot.forEach(doc => {
-                     this.clients.push(doc.data());
+                     let clientDoc = doc.data();
+                     clientDoc.clientId = doc.id;
+                     this.clients.push(clientDoc);
                   });
                })
                .catch(err => console.error(err));
