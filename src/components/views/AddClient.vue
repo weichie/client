@@ -74,7 +74,8 @@
                zip: '',
                city: '',
                country: '',
-               website: ''
+               website: '',
+               owner: this.$store.getters.getUserDoc
             },
             errorMessage: ''
          }

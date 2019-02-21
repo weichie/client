@@ -52,6 +52,7 @@
       methods: {
          getClientInfo(){
             db.collection('clients')
+               .where('owner', '==', this.$store.getters.getUserDoc)
                .get()
                .then(snapshot => {
                   snapshot.forEach(doc => {
