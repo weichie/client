@@ -12,6 +12,7 @@ import AddClient from './components/views/AddClient'
 
 /* Client */
 import EditClient from './components/views/client/EditClient'
+import ServerClient from './components/views/client/ServerClient'
 
 export const routes = [
    {
@@ -41,6 +42,11 @@ export const routes = [
       name: 'EditClient',
       component: EditClient,
       meta: { requiresAuth: true }
+   },{
+      path: '/client/:id/server',
+      name: 'ServerClient',
+      component: ServerClient,
+      meta: {requiresAuth: true}
    },{
       path: '/add-clients',
       name: 'AddClient',

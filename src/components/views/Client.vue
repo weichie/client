@@ -67,7 +67,7 @@
             <div class="panel-header">
                <h4 class="toUpper bold align-center flex-between">
                   Server Info
-                  <router-link to="#" class="btn btn-primary">
+                  <router-link :to="`/client/${this.$route.params.id}/server`" class="btn btn-primary">
                      Edit
                   </router-link>
                </h4>

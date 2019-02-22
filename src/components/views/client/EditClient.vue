@@ -1,6 +1,6 @@
 <template>
    <div class="container">
-      <h2>Edit client info.</h2>
+      <h2>Edit&nbsp;<span v-if="clientInfo">{{ clientInfo.companyName }}</span>.</h2>
 
        <div class="panel-row">
          <div class="panel medium">
@@ -86,7 +86,7 @@
          updateClient(){
             var clientRef = db.collection('clients').doc(this.$route.params.id);
 
-            let setWithMerge = clientRef.set(this.clientInfo, {merge: true})
+            let setWithMerge = clientRef.update(this.clientInfo)
                .then(() => this.successMessage = 'Client info updated!')
                .catch(err => this.errorMessage = err.message);
          }
