@@ -10,6 +10,9 @@ import Income from './components/views/Income'
 import Expense from './components/views/Expense'
 import AddClient from './components/views/AddClient'
 
+/* Client */
+import EditClient from './components/views/client/EditClient'
+
 export const routes = [
    {
       path: '*',
@@ -32,6 +35,11 @@ export const routes = [
       path: '/client/:id',
       name: 'Client',
       component: Client,
+      meta: { requiresAuth: true }
+   },{
+      path: '/client/:id/edit',
+      name: 'EditClient',
+      component: EditClient,
       meta: { requiresAuth: true }
    },{
       path: '/add-clients',

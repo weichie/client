@@ -1,5 +1,5 @@
 <template>
-   <div class="container">
+   <div class="container" v-if="clientInfo">
       <h1>{{ clientInfo.companyName }}</h1>
       <h2 class="small">
          {{clientInfo.address}},<br>
@@ -12,7 +12,7 @@
             <div class="panel-header">
                <h4 class="toUpper bold align-center flex-between">
                   Client Info
-                  <router-link to="/" class="btn btn-primary">
+                  <router-link :to="`/client/${this.$route.params.id}/edit`" class="btn btn-primary">
                      Edit
                   </router-link>
                </h4>
@@ -61,7 +61,27 @@
             </div>
          </div>
       </div>
-   </div>         
+
+      <div class="panel-row">
+         <div class="panel semi">
+            <div class="panel-header">
+               <h4 class="toUpper bold align-center flex-between">
+                  Server Info
+                  <router-link to="#" class="btn btn-primary">
+                     Edit
+                  </router-link>
+               </h4>
+            </div>
+            <div class="panel-body">
+               <table>
+                  <tbody>
+                     
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
 </template>
 
 <script>
