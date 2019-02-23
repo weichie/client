@@ -13,6 +13,11 @@
    &.medium    {width: 50%;}
    &.third     {width: 33.33%;}
    &.small     {width: 25%;}
+
+   &.transparent{
+      background: none;
+      border: none;
+   }
 }
 
 .panel-header{

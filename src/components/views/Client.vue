@@ -1,11 +1,25 @@
 <template>
    <div class="container" v-if="clientInfo">
-      <h1>{{ clientInfo.companyName }}</h1>
-      <h2 class="small">
-         {{clientInfo.address}},<br>
-         {{clientInfo.zip}} {{clientInfo.city}}<br>
-         {{clientInfo.country}}
-      </h2>
+      <div class="panel-row">
+         <div class="panel semi transparent">
+            <h1>{{ clientInfo.companyName }}</h1>
+            <h2 class="small">
+               {{clientInfo.address}},<br>
+               {{clientInfo.zip}} {{clientInfo.city}}<br>
+               {{clientInfo.country}}
+            </h2>
+         </div>
+         <div class="panel small transparent client-actions">
+            <router-link to="/" class="btn btn-big btn-block btn-primary text-center">
+               <i class="fas fa-file"></i>
+               Create invoice
+            </router-link>
+            <router-link to="/" class="btn btn-big btn-block btn-secondary text-center">
+               <i class="fas fa-download"></i>
+               Export Client
+            </router-link>
+         </div>
+      </div>
 
       <div class="panel-row">
          <div class="panel semi">
@@ -72,12 +86,78 @@
                   </router-link>
                </h4>
             </div>
-            <div class="panel-body">
-               <table>
-                  <tbody>
-                     
-                  </tbody>
-               </table>
+            <div class="panel-body" v-if="serverInfo">
+               <div class="data-row" v-if="serverInfo.cpLink">
+                  <h5>Control Panel</h5>
+                  <table>
+                     <tbody>
+                        <tr>
+                           <td><strong class="toCamel">URL</strong></td>
+                           <td>{{ serverInfo.cpLink }}</td>
+                        </tr>
+                        <tr>
+                           <td><strong class="toCamel">Platform</strong></td>
+                           <td><a :href="`${serverInfo.CmsAdmin}`">{{serverInfo.cpType}}</a></td>
+                        </tr>
+                        <tr>
+                           <td><strong class="toCamel">Username</strong></td>
+                           <td>{{ serverInfo.cpUsername }}</td>
+                        </tr>
+                        <tr>
+                           <td><strong class="toCamel">Password</strong></td>
+                           <td>{{ serverInfo.cpPassword }}</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+
+               <div class="data-row" v-if="serverInfo.cmsAdmin">
+                  <h5>CMS</h5>
+                  <table>
+                     <tbody>
+                        <tr>
+                           <td><strong class="toCamel">CMS Type</strong></td>
+                           <td>{{ serverInfo.cmsType }}</td>
+                        </tr>
+                        <tr>
+                           <td><strong class="toCamel">Admin Link</strong></td>
+                           <td><a :href="serverInfo.CmsAdmin">{{serverInfo.cmsAdmin}}</a></td>
+                        </tr>
+                        <tr>
+                           <td><strong class="toCamel">Username</strong></td>
+                           <td>{{ serverInfo.cmsUsername }}</td>
+                        </tr>
+                        <tr>
+                           <td><strong class="toCamel">Password</strong></td>
+                           <td>{{ serverInfo.cmsPassword }}</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+
+               <div class="data-row" v-if="serverInfo.ftpHost">
+                  <h5>FTP</h5>
+                  <table>
+                     <tbody>
+                        <tr>
+                           <td><strong class="toCamel">Host</strong></td>
+                           <td>{{ serverInfo.ftpHost }}</td>
+                        </tr>
+                        <tr v-if="serverInfo.ftpPort">
+                           <td><strong class="toCamel">Port</strong></td>
+                           <td>{{serverInfo.ftpPort}}</td>
+                        </tr>
+                        <tr>
+                           <td><strong class="toCamel">Username</strong></td>
+                           <td>{{ serverInfo.ftpUsername }}</td>
+                        </tr>
+                        <tr>
+                           <td><strong class="toCamel">Password</strong></td>
+                           <td>{{ serverInfo.ftpPassword }}</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
             </div>
          </div>
       </div>
@@ -93,6 +173,7 @@
       data(){
          return{
             clientInfo: null,
+            serverInfo: null,
             errorMessage: null
          }
       },
@@ -105,6 +186,19 @@
             })
             .catch(err => {
                this.errorMessage = err.message
+            });
+         
+         db.collection('clients')
+            .doc(this.$route.params.id)
+            .collection('server')
+            .get()
+            .then(snapshot => {
+               snapshot.forEach(server => {
+                  this.serverInfo = server.data();
+               });
+            })
+            .catch(err => {
+               this.errorMessage = err.message;
             });
       },
    }

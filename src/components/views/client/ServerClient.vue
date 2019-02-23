@@ -13,10 +13,10 @@
                   <input class="input" type="text" placeholder="CP Link" v-model="server.cpLink" />
                </div>
                <div class="input-group medium">
-                  <input class="input" type="email" placeholder="CP Username" v-model="server.cpUsername" />
+                  <input class="input" type="email" placeholder="CP Email" v-model="server.cpEmail" />
                </div>
                <div class="input-group medium">
-                  <input class="input" type="tel" placeholder="CP Email" v-model="server.cpUsername" />
+                  <input class="input" type="text" placeholder="CP Username" v-model="server.cpUsername" />
                </div>
                <div class="input-group medium">
                   <input class="input" type="text" placeholder="CP Password" v-model="server.cpPassword" />
@@ -98,7 +98,7 @@
             server: {
                cpType: '',
                cpLink: '',
-               cpUsername: '',
+               cpEmail: '',
                cpUsername: '',
                cpPassword: '',
                dbHost: '',
